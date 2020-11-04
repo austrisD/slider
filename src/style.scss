@@ -1,45 +1,75 @@
+@import "./mixin.scss";
+body {
+  box-sizing: border-box;
+  width: 100vw;
+}
 h1 {
   display: block;
   margin: auto;
-  color: red;
   font-size: 50px;
   text-align: center;
-  border: 2px solid #000;
 }
 
-.sliderContainer {
+.slider {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
-  width: fit-content;
   align-items: center;
-  button {
-    margin-right: -20px;
-    background: transparent;
-    position: relative;
-    z-index: 1;
-    height: fit-content;
-  }
-}
-.slider {
-  max-width: 1200px;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  border: 3px solid #90ff00;
-  box-shadow: 0 0 2px #000;
   height: 500px;
+  width: fit-content;
+  margin: 0 auto;
   &::-webkit-scrollbar {
     display: none;
   }
-  .sliderContent {
-    display: flex;
-    flex-direction: row;
+  button {
+    border: none;
+    position: relative;
+    background: transparent;
+    z-index: 1;
+    color: #fff;
+    cursor: pointer;
+    svg {
+      fill: #90ff00;
+      height: 50px;
+      width: 50px;
+    }
+  }
+  .slider__swipeLeft {
+    margin-right: -60px;
+  }
+  .slider__swipeRight {
+    margin-left: -60px;
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+  .sliderContainer {
     box-sizing: border-box;
-    width: fit-content;
-    height: inherit;
-    * {
-      box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+    border: 3px solid #90ff00;
+    box-shadow: 0 0 2px #000;
+    width: 98vw;
+    @include tablet() {
+      width: 750px;
+    }
+    @include desktop() {
       width: 1200px;
+    }
+    .sliderContent {
+      box-sizing: border-box;
+      margin: 0;
+      flex-direction: row;
+      display: flex;
+      width: 100%;
+      height: inherit;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      > * {
+        width: 100%;
+      }
     }
   }
 }
@@ -47,9 +77,117 @@ h1 {
 /*slider logic style*/
 .Paragraph {
   font-family: "Times New Roman", Times, serif;
-  font-size: 24px;
   text-align: center;
   padding: 20px 10px 10px;
+  font-size: 14px;
+  @include tablet() {
+    font-size: 18px;
+  }
+  @include desktop() {
+    font-size: 24px;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px 5%;
+  h2 {
+    align-self: flex-start;
+    width: 100%;
+  }
+}
+.form__container {
+  box-sizing: border-box;
+  align-self: center;
+  margin: auto 0;
+  @include mobile() {
+    display: flex;
+    flex-direction: column;
+  }
+  @include tablet() {
+    display: grid;
+    width: calc(100% - 20px);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    grid-template-areas:
+      "name name surname surname"
+      "email email birthday birthday"
+      "password1 password1 password2 password2"
+      "submit submit submit submit";
+  }
+  > * {
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: auto;
+    width: 100%;
+    @include mobile() {
+      width: 400px;
+    }
+    @include tablet() {
+      width: 95%;
+    }
+    input {
+      border: none;
+      border-bottom: 2px solid #90ff00;
+      transition: 1s;
+      padding-left: 5%;
+      font-size: 24px;
+      &:focus {
+        outline: none;
+        border-bottom-color: #ff8800;
+        transition: 1s;
+      }
+    }
+  }
+  .form__submit {
+    button {
+      font-size: 24px;
+      padding: 0 12px;
+      line-height: 40px;
+      background-color: #90ff00;
+      border-radius: 10px;
+      width: fit-content;
+      margin: 0 auto;
+      transition: 1s;
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 7px #ff8800;
+        transition: 1s;
+      }
+    }
+  }
+}
+
+.form__submit {
+  grid-area: submit;
+}
+
+.form__password1 {
+  grid-area: password1;
+}
+
+.form__password2 {
+  grid-area: password2;
+}
+
+.form__name {
+  grid-area: name;
+}
+
+.form__surname {
+  grid-area: surname;
+}
+
+.form__email {
+  grid-area: email;
+}
+
+.form__birthday {
+  grid-area: birthday;
 }
 
 /*slider content style*/
