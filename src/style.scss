@@ -22,16 +22,19 @@ h1 {
     display: none;
   }
   button {
+    background-repeat: no-repeat;
+    background-size: contain;
     border: none;
+    background-color: transparent;
     position: relative;
-    background: transparent;
     z-index: 1;
     color: #fff;
+    height: 50px;
+    width: 50px;
+    padding: 0;
     cursor: pointer;
-    svg {
-      fill: #90ff00;
-      height: 50px;
-      width: 50px;
+    &:focus {
+      outline: none;
     }
   }
   .slider__swipeLeft {
@@ -39,15 +42,16 @@ h1 {
   }
   .slider__swipeRight {
     margin-left: -60px;
-    svg {
-      transform: rotate(180deg);
-    }
   }
   .sliderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     height: 100%;
     margin: 0;
-    border: 3px solid #90ff00;
+    border: 3px solid #aed5e4;
     box-shadow: 0 0 2px #000;
     width: 98vw;
     @include tablet() {
@@ -62,7 +66,7 @@ h1 {
       flex-direction: row;
       display: flex;
       width: 100%;
-      height: inherit;
+      height: 100%;
       overflow-x: scroll;
       &::-webkit-scrollbar {
         display: none;
@@ -71,6 +75,21 @@ h1 {
         width: 100%;
       }
     }
+  }
+}
+.slider__selection {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  margin-top: -24px;
+  .slider__dot {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
   }
 }
 
@@ -132,7 +151,7 @@ h1 {
     }
     input {
       border: none;
-      border-bottom: 2px solid #90ff00;
+      border-bottom: 2px solid #000;
       transition: 1s;
       padding-left: 5%;
       font-size: 24px;
@@ -145,16 +164,19 @@ h1 {
   }
   .form__submit {
     button {
+      box-sizing: border-box;
       font-size: 24px;
       padding: 0 12px;
-      line-height: 40px;
-      background-color: #90ff00;
+      line-height: 30px;
+      background-color: #000;
       border-radius: 10px;
       width: fit-content;
-      margin: 0 auto;
+      height: fit-content;
       transition: 1s;
+      margin:  0 auto;
       &:focus {
         outline: none;
+        border: 1px solid #ff8800;
         box-shadow: 0 0 7px #ff8800;
         transition: 1s;
       }

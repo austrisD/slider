@@ -1,7 +1,6 @@
-import React,{ Suspense } from "react";
+import React,{ Suspense} from "react";
 import ReactDOM from "react-dom";
-import "./style.scss";
-
+React.lazy(()=> import("./style.scss"));
 import Slider from "./slider";
 const Spices = React.lazy(() => import("./sliderContent/Spices"));
 const Paragraph = React.lazy(() => import("./sliderContent/Paragraph"));
@@ -13,17 +12,17 @@ const Hello = () => (
       <h1>React Props slider</h1>
     </header>
     <main>
-      <Slider>
-        <Suspense fallback={<div>loading...</div>}>
-          <Paragraph />
-        </Suspense>
-        <Suspense fallback={<div>loading...</div>}>
-          <Spices />
-        </Suspense>
-        <Suspense fallback={<div>loading...</div>}>
-          <Form />
-        </Suspense>
-      </Slider>
+        <Slider>
+          <Suspense fallback={<div>loading...</div>}>
+            <Paragraph />
+          </Suspense>
+          <Suspense fallback={<div>loading...</div>}>
+            <Spices />
+          </Suspense>
+          <Suspense fallback={<div>loading...</div>}>
+            <Form />
+          </Suspense>
+        </Slider>
     </main>
     <footer></footer>
   </>
