@@ -1,10 +1,12 @@
 import React,{ Suspense} from "react";
 import ReactDOM from "react-dom";
-React.lazy(()=> import("./style.scss"));
-import Slider from "./slider";
+import "./scss/main.scss";
+import Slider from "./Slider";
+import Loading from "./assets/Loading";
 const Spices = React.lazy(() => import("./sliderContent/Spices"));
 const Paragraph = React.lazy(() => import("./sliderContent/Paragraph"));
 const Form = React.lazy(() => import("./sliderContent/Form"));
+const Gallery = React.lazy(() => import("./sliderContent/Gallery"));
 
 const Hello = () => (
   <>
@@ -12,17 +14,20 @@ const Hello = () => (
       <h1>React Props slider</h1>
     </header>
     <main>
-        <Slider>
-          <Suspense fallback={<div>loading...</div>}>
-            <Paragraph />
-          </Suspense>
-          <Suspense fallback={<div>loading...</div>}>
-            <Spices />
-          </Suspense>
-          <Suspense fallback={<div>loading...</div>}>
-            <Form />
-          </Suspense>
-        </Slider>
+      <Slider>
+        <Suspense fallback={Loading}>
+          <Paragraph />
+        </Suspense>
+        <Suspense fallback={Loading}>
+          <Spices />
+        </Suspense>
+        <Suspense fallback={Loading}>
+          <Form />
+        </Suspense>
+        <Suspense fallback={Loading}>
+          <Gallery />
+        </Suspense>
+      </Slider>
     </main>
     <footer></footer>
   </>

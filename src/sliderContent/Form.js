@@ -1,5 +1,6 @@
 import React from "react";
-import "../style.scss";
+import'../scss/Form.scss';
+
 
 const Form = () => {
   return (

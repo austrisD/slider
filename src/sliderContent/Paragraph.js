@@ -1,4 +1,5 @@
 import React from "react";
+import "../scss/sliderContent.scss";
 
 const Paragraph = () => {
   return (

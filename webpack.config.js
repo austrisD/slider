@@ -20,9 +20,9 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
-     {
+      {
         test: /\.(png|jp(e*)g|svg|gif)$/,
-        use: ['file-loader'],
+        use: ["file-loader"],
       },
     ],
   },
@@ -38,15 +38,8 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   optimization: {
-    runtimeChunk: "single",
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
-        },
-      },
+      chunks: "all",
     },
   },
 };

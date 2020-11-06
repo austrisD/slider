@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import "./scss/slider.scss";
 import right from "./assets/republican_Right.svg";
 import left from "./assets/democrat_left.svg";
 import dotActive from "./assets/dod_active.svg";
 import dotInActive from "./assets/dod_inactive.svg";
 
-import "./style.scss";
 
 let Slider = (props) => {
   let sliderContent = React.Children.toArray(props.children);

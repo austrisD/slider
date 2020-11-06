@@ -1,0 +1,106 @@
+@import "./mixin.scss";
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px 5%;
+  h2 {
+    align-self: flex-start;
+    width: 100%;
+  }
+}
+.form__container {
+  box-sizing: border-box;
+  align-self: center;
+  margin: auto 0;
+  @include mobile() {
+    display: flex;
+    flex-direction: column;
+  }
+  @include tablet() {
+    display: grid;
+    width: calc(100% - 20px);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    grid-template-areas:
+      "name name surname surname"
+      "email email birthday birthday"
+      "password1 password1 password2 password2"
+      "submit submit submit submit";
+  }
+  > * {
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: auto;
+    width: 100%;
+    @include mobile() {
+      width: 400px;
+    }
+    @include tablet() {
+      width: 95%;
+    }
+    input {
+      border: none;
+      border-bottom: 2px solid #000;
+      transition: 1s;
+      padding-left: 5%;
+      font-size: 24px;
+      &:focus {
+        outline: none;
+        border-bottom-color: #ff8800;
+        transition: 1s;
+      }
+    }
+  }
+  .form__submit {
+    button {
+      box-sizing: border-box;
+      font-size: 24px;
+      padding: 0 12px;
+      line-height: 30px;
+      background-color: #000;
+      border-radius: 10px;
+      width: fit-content;
+      height: fit-content;
+      transition: 1s;
+      margin: 0 auto;
+      &:focus {
+        outline: none;
+        border: 1px solid #ff8800;
+        box-shadow: 0 0 7px #ff8800;
+        transition: 1s;
+      }
+    }
+  }
+}
+
+.form__submit {
+  grid-area: submit;
+}
+
+.form__password1 {
+  grid-area: password1;
+}
+
+.form__password2 {
+  grid-area: password2;
+}
+
+.form__name {
+  grid-area: name;
+}
+
+.form__surname {
+  grid-area: surname;
+}
+
+.form__email {
+  grid-area: email;
+}
+
+.form__birthday {
+  grid-area: birthday;
+}
