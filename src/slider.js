@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./scss/slider.scss";
 import right from "./assets/republican_Right.svg";
 import left from "./assets/democrat_left.svg";
 import dotActive from "./assets/dod_active.svg";
 import dotInActive from "./assets/dod_inactive.svg";
 
-
 let Slider = (props) => {
   let sliderContent = React.Children.toArray(props.children);
   let slideCount = sliderContent.length - 1;
   let [SlideNr, setSlideNr] = useState(0);
+  const [SlideAnimation, setSlideAnimation] = useState("");
+
+  
 
   let swipeRight = () => {
     SlideNr = SlideNr + 1;
     SlideNr = SlideNr > slideCount ? 0 : SlideNr;
+        setSlideAnimation("toRight");
+
     setSlideNr(SlideNr);
   };
 
   let swipeLeft = () => {
     SlideNr = SlideNr - 1;
     SlideNr = SlideNr < 0 ? slideCount : SlideNr;
+    setSlideAnimation("toLeft");
     setSlideNr(SlideNr);
   };
 
@@ -39,11 +44,6 @@ let Slider = (props) => {
       ></div>
     );
   }
-
-  useEffect(() => {
-    console.log("SlideNr changed");
-  }, [SlideNr, items]);
-
   return (
     <div className="slider">
       <button
@@ -55,7 +55,11 @@ let Slider = (props) => {
       ></button>
 
       <div className="sliderContainer">
-        <div className="sliderContent">{props.children[SlideNr]}</div>
+        <div className={`sliderContent ${SlideAnimation}`}>
+          {props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]}
+          {props.children[SlideNr]}
+          {props.children[SlideNr + 1 > slideCount ? 0 : SlideNr + 1]}
+        </div>
         <div className="slider__selection">{items}</div>
       </div>
 

@@ -1,5 +1,5 @@
 @import "./mixin.scss";
-@keyframes slide_in {
+@keyframes slide_Right {
   from {
     transform: translateX(100%);
   }
@@ -7,26 +7,25 @@
     transform: translateX(0);
   }
 }
-
-@keyframes rotate {
+@keyframes slide_Left  {
   from {
-    transform: rotate(0);
+    transform: translateX(-100%);
   }
   to {
-    transform: rotate(360deg);
+    transform: translateX(0);
   }
 }
 
-.Loading {
-  display: block;
-  width: 60px;
-  height: 60px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  animation: infinite 1s rotate linear;
-  margin: auto;
-  align-self: center;
-  justify-self: center;
+
+.toRight {
+  > * {
+    animation: slide_Right 1s 1 forwards;
+  }
+}
+.toLeft {
+  > * {
+    animation: slide_Left 1s 1 forwards;
+  }
 }
 
 .slider {
@@ -79,20 +78,27 @@
     @include desktop() {
       width: 1200px;
     }
+    overflow-x: hidden;
     .sliderContent {
       box-sizing: border-box;
       margin: 0;
       flex-direction: row;
       display: flex;
-      width: 100%;
+      width: fit-content;
       height: 100%;
       overflow-x: scroll;
       &::-webkit-scrollbar {
         display: none;
       }
       > * {
-        width: 100%;
-        animation: slide_in 1s 1;
+        box-sizing: border-box;
+        width: 98vw;
+        @include tablet() {
+          width: 750px;
+        }
+        @include desktop() {
+          width: 1200px;
+        }
       }
     }
   }

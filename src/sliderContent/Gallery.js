@@ -3,12 +3,15 @@ import "../scss/Gallery.scss";
 import Loading from "../assets/Loading.js";
 import { galleryData } from "../data/galleryData";
 
-const GalleryPhoto = (name,url) => {
+const GalleryPhoto = (name,url,wiki) => {
   return (
     <Suspense fallback={Loading}>
-      <div className="gallery__photo">
+      <div
+        className="gallery__photo"
+        style={{ backgroundImage: `url(${url})` }}
+      >
         <p>{name}</p>
-        <img src={url} alt="fail to load data" />
+        <a href={wiki}>Wiki</a>
       </div>
     </Suspense>
   );
@@ -16,7 +19,8 @@ const GalleryPhoto = (name,url) => {
 
 let Gallery = () => {
 const listItems = galleryData.map((index) => 
-GalleryPhoto(index.name, index.url)
+GalleryPhoto(index.name, index.url,
+  index.wiki)
 );
 return <div className="Gallery">{listItems}</div>;
 };

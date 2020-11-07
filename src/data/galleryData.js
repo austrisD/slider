@@ -40,4 +40,10 @@ export const galleryData = [
     name: "Acropolis of Athens",
     wiki: "https://en.wikipedia.org/wiki/Acropolis_of_Athens",
   },
+  {
+    url:
+      "https://images.unsplash.com/photo-1544815521-80841127c00f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+    name: "Great Pyramid of Giza",
+    wiki: "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+  },
 ]; 

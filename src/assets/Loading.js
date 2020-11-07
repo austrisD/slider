@@ -1,5 +1,6 @@
 import React from 'react';
 import loadCircle from "./loading.svg";
+import '../scss/main.scss';
 
 
 const Loading = () => {
