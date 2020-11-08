@@ -29,7 +29,7 @@ const Hello = () => (
         </Suspense>
       </Slider>
     </main>
-    <footer></footer>
+    <footer>Made by Austris Daugulis &copy;</footer>
   </>
 );
 

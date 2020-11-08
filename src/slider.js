@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./scss/slider.scss";
 import right from "./assets/republican_Right.svg";
 import left from "./assets/democrat_left.svg";
@@ -8,20 +8,26 @@ import dotInActive from "./assets/dod_inactive.svg";
 let Slider = (props) => {
   let sliderContent = React.Children.toArray(props.children);
   let slideCount = sliderContent.length - 1;
+  let animationActive = false;
   let [SlideNr, setSlideNr] = useState(0);
+  useEffect(() => {
+    animationActive = true;
+    setTimeout(() => {
+      animationActive = false;
+    }, 1000);
+  }, [SlideNr]);
   const [SlideAnimation, setSlideAnimation] = useState("");
 
-  
-
   let swipeRight = () => {
+    if (animationActive === true) return;
     SlideNr = SlideNr + 1;
     SlideNr = SlideNr > slideCount ? 0 : SlideNr;
-        setSlideAnimation("toRight");
-
+    setSlideAnimation("toRight");
     setSlideNr(SlideNr);
   };
 
   let swipeLeft = () => {
+    if (animationActive === true) return;
     SlideNr = SlideNr - 1;
     SlideNr = SlideNr < 0 ? slideCount : SlideNr;
     setSlideAnimation("toLeft");
@@ -34,6 +40,7 @@ let Slider = (props) => {
       <div
         className="slider__dot"
         onClick={() => {
+          setSlideAnimation("fade");
           setSlideNr(index);
         }}
         style={{
