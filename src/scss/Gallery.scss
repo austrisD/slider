@@ -1,26 +1,30 @@
+@import "../scss/mixin.scss";
 .Gallery {
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
   height: inherit;
+  align-content: center;
+  justify-content: space-between;
+  background-color: #000;
+  column-gap: 5px;
+  padding: 2px 0;
   .gallery__photo {
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: calc(25% - 2px);
-    height: calc(50% - 3px);
-    border: 1px solid #000;
-    p {
-      text-align: center;
-      text-shadow: 0 0 1px #fff;
+    width: 33%;
+    height: fit-content;
+
+    @include mobile() {
+      width: 25%;
     }
-    a {
-      display: block;
-      text-decoration: none;
-      color: #000;
-      text-shadow: 0 0 1px #fff;
+    @include tablet() {
+      width: 21%;
+    }
+    @include desktop() {
+      width: 21%;
+    }
+    img {
+      width: 100%;
     }
   }
 }

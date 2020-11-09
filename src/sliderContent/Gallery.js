@@ -3,26 +3,23 @@ import "../scss/Gallery.scss";
 import Loading from "../assets/Loading.js";
 import { galleryData } from "../data/galleryData";
 
-const GalleryPhoto = (name,url,wiki) => {
+const GalleryPhoto = (name, url, wiki, keyProp) => {
   return (
-    <Suspense fallback={Loading}>
-      <div
-        className="gallery__photo"
-        style={{ backgroundImage: `url(${url})` }}
-      >
-        <p>{name}</p>
-        <a href={wiki}>Wiki</a>
-      </div>
-    </Suspense>
+    <div key={keyProp} className="gallery__photo">
+      <Suspense fallback={Loading}>
+        <a href={wiki}>
+          <img src={url} alt={name} title={name} />
+        </a>
+      </Suspense>
+    </div>
   );
 };
 
 let Gallery = () => {
-const listItems = galleryData.map((index) => 
-GalleryPhoto(index.name, index.url,
-  index.wiki)
-);
-return <div className="Gallery">{listItems}</div>;
+  const listItems = galleryData.map((value, index) =>
+    GalleryPhoto(value.name, value.url, value.wiki, index)
+  );
+  return <div className="Gallery">{listItems}</div>;
 };
 
 export default Gallery;

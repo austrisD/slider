@@ -31,12 +31,12 @@ export const galleryData = [
   },
   {
     url:
-      "https://culturetourist.com/wp-content/uploads/2019/10/the-palatine-hill-teresa-brogan-abroad-1020x680.jpeg",
+      "https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F2e6f5ea8-77bd-11e8-a926-3277088865d6.jpg?crop=5616%2C3159%2C0%2C293&resize=1180",
     name: "Palatine Hill in Rome",
   },
   {
     url:
-      "https://culturetourist.com/wp-content/uploads/2019/10/Acropolis-Athens.jpg",
+      "https://www.greeka.com/village_beach/photos/443/acropolis-top-1-1280.jpg",
     name: "Acropolis of Athens",
     wiki: "https://en.wikipedia.org/wiki/Acropolis_of_Athens",
   },
