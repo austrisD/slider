@@ -3,7 +3,7 @@ import "../scss/Gallery.scss";
 import Loading from "../assets/Loading.js";
 import { galleryData } from "../data/galleryData";
 
-const GalleryPhoto = (name, url, wiki, keyProp) => {
+ const GalleryPhoto = (name, url, wiki, keyProp) => {
   return (
     <div key={keyProp} className="gallery__photo">
       <Suspense fallback={Loading}>
@@ -15,11 +15,10 @@ const GalleryPhoto = (name, url, wiki, keyProp) => {
   );
 };
 
-let Gallery = () => {
+export let Gallery = () => {
   const listItems = galleryData.map((value, index) =>
     GalleryPhoto(value.name, value.url, value.wiki, index)
   );
   return <div className="Gallery">{listItems}</div>;
 };
 
-export default Gallery;

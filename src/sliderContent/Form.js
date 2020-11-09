@@ -2,7 +2,7 @@ import React from "react";
 import'../scss/Form.scss';
 
 
-const Form = () => {
+ export const Form = () => {
   return (
     <div className="form">
       <h2>Registration Form</h2>
@@ -39,4 +39,3 @@ const Form = () => {
   );
 };
 
-export default Form;

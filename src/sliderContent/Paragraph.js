@@ -1,7 +1,7 @@
 import React from "react";
 import "../scss/sliderContent.scss";
 
-const Paragraph = () => {
+export const Paragraph = () => {
   return (
     <p className="Paragraph">
       A company that can streamline elegantly will (at some undefined point of
@@ -31,4 +31,4 @@ const Paragraph = () => {
   );
 };
 
-export default Paragraph;
+// export default Paragraph;
