@@ -32,7 +32,7 @@ import'../scss/Form.scss';
           <input type="password" name="Password repeat" />
         </label>
         <div className="form__submit">
-          <button type="submit">SUBMIT</button>
+          <button onClick={(event)=>{event.preventDefault();}} type="submit">SUBMIT</button>
         </div>
       </form>
     </div>

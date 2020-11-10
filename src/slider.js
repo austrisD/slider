@@ -9,6 +9,8 @@ let Slider = (props) => {
   let sliderContent = React.Children.toArray(props.children);
   let slideCount = sliderContent.length - 1;
   let animationActive = useRef(false);
+  let swipeStart = useRef(0);
+  const minSwipeLength = 300;
   let [SlideNr, setSlideNr] = useState(0);
   useEffect(() => {
     animationActive.current = true;
@@ -34,7 +36,7 @@ let Slider = (props) => {
   //slide movement
 
   let items = [];
-  for (let [index,] of sliderContent.entries()) {
+  for (let [index] of sliderContent.entries()) {
     items.push(
       <div
         key={index}
@@ -52,6 +54,17 @@ let Slider = (props) => {
     );
   }
   //creating dot selection menu in lower part of slider.
+  let swipeFunction = (swipeEnd) => {
+    if (animationActive.current === true) return;
+    let SwipeLength = Math.abs(swipeStart.current - swipeEnd);
+    if (SwipeLength < minSwipeLength) return;
+    swipeStart.current < swipeEnd ? previousSlide() : nextSlide();
+    console.log("start:" + swipeStart.current);
+    console.log("end:" + swipeEnd);
+    console.log("length:" + SwipeLength);
+  };
+  //**************************handle swipe functions***************************/
+
   return (
     <div className="slider">
       <button
@@ -65,17 +78,19 @@ let Slider = (props) => {
       <div
         className="sliderContainer"
         onTouchStart={(event) => {
-          console.log("touch start" + event.touches[0].clientX);
+          swipeStart.current = event.touches[0].clientX;
         }}
         onTouchEnd={(event) => {
-          console.log(event.changedTouches[0].clientX);
+          swipeFunction(event.changedTouches[0].clientX);
         }}
-        onMouseUp={(event) => {
-          console.log("click" + event.screenX);
-        }}
-        onDragEnd={(event) => {
-          console.log("click released" + event.clientX);
-        }}
+        //************************touch swipe******************************//
+        // onMouseUp={(event) => {
+        //   swipeStart = event.screenX;
+        // }}
+        // onMouseDown={(event) => {
+        //   swipeFunction(swipeStart, event.clientX);
+        // }}
+        //*****************************mouse swipe************************//
       >
         <div className={`sliderContent ${SlideAnimation}`}>
           {props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]}

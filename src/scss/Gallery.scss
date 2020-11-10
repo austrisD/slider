@@ -7,13 +7,12 @@
   height: inherit;
   align-content: center;
   justify-content: space-between;
-  background-color: #000;
+  background-color: rgb(0, 82, 82);
   column-gap: 5px;
   padding: 2px 0;
   .gallery__photo {
     width: 33%;
     height: fit-content;
-
     @include mobile() {
       width: 25%;
     }

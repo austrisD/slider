@@ -66,13 +66,13 @@
   }
   .slider__swipeLeft {
     margin-right: -50px;
-    @include desktop(){
-      margin-right: 10px ;
+    @include desktop() {
+      margin-right: 10px;
     }
   }
   .slider__swipeRight {
     margin-left: -50px;
-    @include desktop(){
+    @include desktop() {
       margin-left: 10px;
     }
   }
@@ -86,13 +86,14 @@
     margin: 0;
     border: 3px solid #aed5e4;
     width: 98vw;
+    overflow-x: hidden;
+    box-shadow: 5px 5px 10px #0047778c ;
     @include tablet() {
       width: 750px;
     }
     @include desktop() {
       width: 1200px;
     }
-    overflow-x: hidden;
     .sliderContent {
       box-sizing: border-box;
       margin: 0;
