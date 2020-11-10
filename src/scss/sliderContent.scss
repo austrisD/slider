@@ -1,9 +1,15 @@
-@import './mixin.scss';
+@import "./mixin.scss";
 .Paragraph {
   font-family: "Times New Roman", Times, serif;
   text-align: center;
   padding: 20px 10px 10px;
   font-size: 14px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   @include tablet() {
     font-size: 18px;
   }
@@ -11,5 +17,3 @@
     font-size: 24px;
   }
 }
-
-  

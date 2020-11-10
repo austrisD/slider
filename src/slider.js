@@ -10,7 +10,6 @@ let Slider = (props) => {
   let slideCount = sliderContent.length - 1;
   let animationActive = useRef(false);
   let swipeStart = useRef(0);
-  const minSwipeLength = 300;
   let [SlideNr, setSlideNr] = useState(0);
   useEffect(() => {
     animationActive.current = true;
@@ -54,6 +53,7 @@ let Slider = (props) => {
     );
   }
   //creating dot selection menu in lower part of slider.
+  const minSwipeLength = 200;
   let swipeFunction = (swipeEnd) => {
     if (animationActive.current === true) return;
     let SwipeLength = Math.abs(swipeStart.current - swipeEnd);
@@ -84,13 +84,15 @@ let Slider = (props) => {
           swipeFunction(event.changedTouches[0].clientX);
         }}
         //************************touch swipe******************************//
-        // onMouseUp={(event) => {
-        //   swipeStart = event.screenX;
-        // }}
-        // onMouseDown={(event) => {
-        //   swipeFunction(swipeStart, event.clientX);
-        // }}
+
+        onMouseDown={(event) => {
+          swipeStart.current = event.screenX;
+        }}
+        onMouseUp={(event) => {
+          swipeFunction(event.clientX);
+        }}
         //*****************************mouse swipe************************//
+        draggable="false"
       >
         <div className={`sliderContent ${SlideAnimation}`}>
           {props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]}

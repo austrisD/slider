@@ -3,12 +3,12 @@ import "../scss/Gallery.scss";
 import Loading from "../assets/Loading.js";
 import { galleryData } from "../data/galleryData";
 
- const GalleryPhoto = (name, url, wiki, keyProp) => {
+const GalleryPhoto = (name, url, wiki, keyProp) => {
   return (
-    <div key={keyProp} className="gallery__photo">
+    <div draggable="false" key={keyProp} className="gallery__photo">
       <Suspense fallback={Loading}>
-        <a href={wiki}>
-          <img src={url} alt={name} title={name} />
+        <a draggable="false" href={wiki}>
+          <img draggable="false" src={url} alt={name} title={name} />
         </a>
       </Suspense>
     </div>
@@ -21,4 +21,3 @@ export let Gallery = () => {
   );
   return <div className="Gallery">{listItems}</div>;
 };
-
