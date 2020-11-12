@@ -1,4 +1,5 @@
 @import "./mixin.scss";
+
 @keyframes slide_Right {
   from {
     transform: translateX(100%);
@@ -23,6 +24,7 @@
     opacity: 1;
   }
 }
+
 .toRight {
   > * {
     animation: slide_Right 1s 1 forwards;
@@ -39,6 +41,11 @@
   }
 }
 .slider {
+  box-sizing: border-box;
+  height: fit-content;
+  padding-bottom: 16px;
+}
+.sliderOuterShell {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -87,7 +94,7 @@
     border: 3px solid #aed5e4;
     width: 98vw;
     overflow-x: hidden;
-    box-shadow: 5px 5px 10px #0047778c ;
+    box-shadow: 5px 5px 10px #0047778c;
     @include tablet() {
       width: 750px;
     }
@@ -117,6 +124,14 @@
           width: 1200px;
         }
       }
+      // > :first-child {
+      //   transition: 2s;
+      //   display: none;
+      // }
+      // > :last-child {
+      //   transition: 2s;
+      //   display: none;
+      // }
     }
   }
 }
@@ -126,7 +141,8 @@
   display: flex;
   flex-direction: row;
   z-index: 1;
-  margin-top: -24px;
+  margin: -40px auto auto auto;
+  width: fit-content;
   .slider__dot {
     width: 24px;
     height: 24px;

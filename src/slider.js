@@ -67,48 +67,50 @@ let Slider = (props) => {
 
   return (
     <div className="slider">
-      <button
-        style={{ backgroundImage: `url(${left})` }}
-        className="slider__swipeLeft"
-        onClick={() => {
-          previousSlide();
-        }}
-      ></button>
+      <div className="sliderOuterShell">
+        <button
+          style={{ backgroundImage: `url(${left})` }}
+          className="slider__swipeLeft"
+          onClick={() => {
+            previousSlide();
+          }}
+        ></button>
 
-      <div
-        className="sliderContainer"
-        onTouchStart={(event) => {
-          swipeStart.current = event.touches[0].clientX;
-        }}
-        onTouchEnd={(event) => {
-          swipeFunction(event.changedTouches[0].clientX);
-        }}
-        //************************touch swipe******************************//
+        <div
+          className="sliderContainer"
+          onTouchStart={(event) => {
+            swipeStart.current = event.touches[0].clientX;
+          }}
+          onTouchEnd={(event) => {
+            swipeFunction(event.changedTouches[0].clientX);
+          }}
+          //************************touch swipe******************************//
 
-        onMouseDown={(event) => {
-          swipeStart.current = event.screenX;
-        }}
-        onMouseUp={(event) => {
-          swipeFunction(event.clientX);
-        }}
-        //*****************************mouse swipe************************//
-        draggable="false"
-      >
-        <div className={`sliderContent ${SlideAnimation}`}>
-          {props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]}
-          {props.children[SlideNr]}
-          {props.children[SlideNr + 1 > slideCount ? 0 : SlideNr + 1]}
+          onMouseDown={(event) => {
+            swipeStart.current = event.screenX;
+          }}
+          onMouseUp={(event) => {
+            swipeFunction(event.clientX);
+          }}
+          //*****************************mouse swipe************************//
+          draggable="false"
+        >
+          <div className={`sliderContent ${SlideAnimation}`}>
+            {props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]}
+            {props.children[SlideNr]}
+            {props.children[SlideNr + 1 > slideCount ? 0 : SlideNr + 1]}
+          </div>
         </div>
-        <div className="slider__selection">{items}</div>
-      </div>
 
-      <button
-        style={{ backgroundImage: `url(${right})` }}
-        className="slider__swipeRight"
-        onClick={() => {
-          nextSlide();
-        }}
-      ></button>
+        <button
+          style={{ backgroundImage: `url(${right})` }}
+          className="slider__swipeRight"
+          onClick={() => {
+            nextSlide();
+          }}
+        ></button>
+      </div>
+      <div className="slider__selection">{items}</div>
     </div>
   );
 };
