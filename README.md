@@ -17,10 +17,16 @@
     npm run build
     to do:"need to configure output!!!"
 
-
+## features for this slider
+    1) it has 3 ways of navigating content 
+        *button
+        *Mouse swipe, click > drag(at least 200px) > release
+        *touchscreen swipe (swipe must by at least 200px long)
+        *dod navigating
 
 ### know bugs 
-1)navigating with tab key in slider content its possible to go to next slide partially.
+1)navigating with tab key in slider content its possible to go to next slide partially. [fixed]
+2)need to reduce code!!!
 
 
     

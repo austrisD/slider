@@ -11,19 +11,33 @@ let Slider = (props) => {
   let animationActive = useRef(false);
   let swipeStart = useRef(0);
   let [SlideNr, setSlideNr] = useState(0);
+  let [PreviousSlideContent, setPreviousSlideContent] = useState(
+    props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]
+  );
+  let [NextSlideContent, setNextSlideContent] = useState(
+    props.children[SlideNr + 1 > slideCount ? 0 : SlideNr + 1]
+  );
   useEffect(() => {
     animationActive.current = true;
     setTimeout(() => {
       animationActive.current = false;
+      setPreviousSlideContent(null);
+      setNextSlideContent(null);
     }, 1000);
   }, [SlideNr]);
-  const [SlideAnimation, setSlideAnimation] = useState("");
+  let [SlideAnimation, setSlideAnimation] = useState("");
 
   let nextSlide = () => {
     if (animationActive.current === true) return;
     SlideNr = SlideNr + 1 > slideCount ? 0 : SlideNr + 1;
     setSlideAnimation("toRight");
     setSlideNr(SlideNr);
+    setNextSlideContent(
+      props.children[SlideNr + 1 > slideCount ? 0 : SlideNr + 1]
+    );
+    setPreviousSlideContent(
+      props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]
+    );
   };
 
   let previousSlide = () => {
@@ -31,8 +45,14 @@ let Slider = (props) => {
     SlideNr = SlideNr - 1 < 0 ? slideCount : SlideNr - 1;
     setSlideAnimation("toLeft");
     setSlideNr(SlideNr);
+    setPreviousSlideContent(
+      props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]
+    );
+    setNextSlideContent(
+      props.children[SlideNr + 1 > slideCount ? 0 : SlideNr + 1]
+    );
   };
-  //slide movement
+  //previous ,next slide
 
   let items = [];
   for (let [index] of sliderContent.entries()) {
@@ -59,9 +79,9 @@ let Slider = (props) => {
     let SwipeLength = Math.abs(swipeStart.current - swipeEnd);
     if (SwipeLength < minSwipeLength) return;
     swipeStart.current < swipeEnd ? previousSlide() : nextSlide();
-    console.log("start:" + swipeStart.current);
-    console.log("end:" + swipeEnd);
-    console.log("length:" + SwipeLength);
+    // console.log("start:" + swipeStart.current);
+    // console.log("end:" + swipeEnd);
+    // console.log("length:" + SwipeLength);
   };
   //**************************handle swipe functions***************************/
 
@@ -96,9 +116,9 @@ let Slider = (props) => {
           draggable="false"
         >
           <div className={`sliderContent ${SlideAnimation}`}>
-            {props.children[SlideNr - 1 < 0 ? slideCount : SlideNr - 1]}
+            {PreviousSlideContent}
             {props.children[SlideNr]}
-            {props.children[SlideNr + 1 > slideCount ? 0 : SlideNr + 1]}
+            {NextSlideContent}
           </div>
         </div>
 

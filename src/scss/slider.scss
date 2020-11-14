@@ -24,7 +24,6 @@
     opacity: 1;
   }
 }
-
 .toRight {
   > * {
     animation: slide_Right 1s 1 forwards;
@@ -124,14 +123,6 @@
           width: 1200px;
         }
       }
-      // > :first-child {
-      //   transition: 2s;
-      //   display: none;
-      // }
-      // > :last-child {
-      //   transition: 2s;
-      //   display: none;
-      // }
     }
   }
 }
