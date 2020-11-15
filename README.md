@@ -26,7 +26,6 @@
 
 ### know bugs 
 1)navigating with tab key in slider content its possible to go to next slide partially. [fixed]
-2)need to reduce code!!!
 
 
     

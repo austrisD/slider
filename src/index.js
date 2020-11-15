@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./scss/main.scss";
-import Slider from "./Slider";
+import Slider from "./slider/Slider";
 import { Paragraph } from "./sliderContent/Paragraph";
 import { Spices } from "./sliderContent/Spices";
 import { Form } from "./sliderContent/Form";
